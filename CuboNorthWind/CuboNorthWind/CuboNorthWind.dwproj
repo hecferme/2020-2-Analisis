@@ -6,10 +6,63 @@
     <Name>CuboNorthWind.database</Name>
     <FullPath>CuboNorthWind.database</FullPath>
   </Database>
+  <Cubes>
+    <ProjectItem>
+      <Name>DW NORTHWND.cube</Name>
+      <FullPath>DW NORTHWND.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>DW NORTHWND.partitions</Name>
+          <FullPath>DW NORTHWND.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+  </Cubes>
+  <Dimensions>
+    <ProjectItem>
+      <Name>Fact Orders.dim</Name>
+      <FullPath>Fact Orders.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Customers.dim</Name>
+      <FullPath>Dim Customers.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Dim Time.dim</Name>
+      <FullPath>Dim Time.dim</FullPath>
+    </ProjectItem>
+  </Dimensions>
+  <DataSources>
+    <ProjectItem>
+      <Name>DW NORTHWND.ds</Name>
+      <FullPath>DW NORTHWND.ds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSourceViews>
+    <ProjectItem>
+      <Name>DW NORTHWND.dsv</Name>
+      <FullPath>DW NORTHWND.dsv</FullPath>
+    </ProjectItem>
+  </DataSourceViews>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
-      <Options />
+      <Options>
+        <ConnectionMappings>
+          <ConfigurationSetting>
+            <Id>DW NORTHWND</Id>
+            <Name>DW NORTHWND</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=(local);User ID=;Initial Catalog=DW_NORTHWND</Value>
+          </ConfigurationSetting>
+        </ConnectionMappings>
+        <ConnectionSecurityMappings>
+          <ConfigurationSetting>
+            <Id>DW NORTHWND</Id>
+            <Name>DW NORTHWND</Name>
+            <Value xsi:type="xsd:int">1</Value>
+          </ConfigurationSetting>
+        </ConnectionSecurityMappings>
+      </Options>
     </Configuration>
   </Configurations>
 </Project>
