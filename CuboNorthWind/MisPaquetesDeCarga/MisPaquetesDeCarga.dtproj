@@ -26,12 +26,13 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">INSTANCIA-ANALI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApgfazTu3eE2bbCWQY6m0JgAAAAACAAAAAAAQZgAAAAEAACAAAAC7/bGCSEigRj8sODCGk803z3oA/NwDwpeJLWg1yzdUawAAAAAOgAAAAAIAACAAAAB+MhXTLzSbdUoHLYqOZ7R/+RfQaIa+eUWYO1oMJMjSVZAAAABBSo0EUBjCAtoe+NnafqxyaiaxYyco2ANVqADIrksN9BEvW1C1P52UKbXFpP2796qeLAwwArX9H4zWZNETeDh3IH498Cl8JKl6fr5N3gLWQCu7Ca2I5dCc03x/SfCqxJcANeMGy4KQhLHoU+7oebYDBdQtYCL6bibPp92CFeFIzit+fhHtOeHhLaLtbiGhyx1AAAAAjLdAXfRzFXLUvji2F5K0X6UG6OQnZJZ48NRCu5J+nunIzDWQlpR4bWkMAnPjNaS+EmjAaG3pHc2iMcU1PzjjAQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApgfazTu3eE2bbCWQY6m0JgAAAAACAAAAAAAQZgAAAAEAACAAAADvBq8aH8S08b6Kh4p8ViFyA1XgetliBIFjeuE87A8IGQAAAAAOgAAAAAIAACAAAAD3OOIxDZOWC00mQZgcQLSVTadlpN1c34GCW+BNbrV9sZAAAACnFGHf0SQaaxMWh6GF5SW/zvf+PH7/f2+OHR9+ROSywVb86JhWU8qNrXeBH3DPKNVM/nhsOgJI/8bt1DakrZpFW19KOD08ilrJsruxqH6KJL+m5DnXQTOzKpoA1sY9d0WxTGxgMSWTxs+lKAt6WMhwHDh9kgvdk9LF8rsoQiEMwyBaV3adM23G5FXzCC0tjYhAAAAAIk3HhxqOQJSyaQvdBxnJE5MBdCTbYjUfxKxZMLjobaDVrrJDsu5g0lDWtXF/vj5N2D04/oVg2yfKWDiRMGlFAw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="HelloWorld.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="HelloWorldConVariables.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="EjecucionCondicional.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
@@ -64,6 +65,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{57A2979A-A3A7-47B7-8E0D-AB5E082B0095}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="EjecucionCondicional.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E06AB6BE-D64A-4DD6-BA60-86497F96472F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">EjecucionCondicional</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CB2F233A-85FE-4BA7-AEFC-C5129BBA9626}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
