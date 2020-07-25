@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="(local).NORTHWND.sa"
+  DTS:DTSID="{4EF10A51-244F-45BD-979A-A0086C384898}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=(local);User ID=sa;Initial Catalog=NORTHWND;Provider=SQLNCLI11.1;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
