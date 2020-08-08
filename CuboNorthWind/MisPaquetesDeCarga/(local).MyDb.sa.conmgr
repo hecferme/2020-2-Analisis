@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="(local).MyDb.sa"
+  DTS:DTSID="{9A7680B4-EB90-4064-B2E7-2211DC0C45B8}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=(local);User ID=sa;Initial Catalog=MyDb;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApgfazTu3eE2bbCWQY6m0JgAAAAACAAAAAAAQZgAAAAEAACAAAACNi3nd7lM9j4hcOlLHPUHNkCch9gCmXp0sS94/ML2NMQAAAAAOgAAAAAIAACAAAAC88G7NDL7uz1ZiqNb76rnOUZhttENdY0sLtca3uL53G4AAAAD25pOP1fcF9BhkSzwmUiteXhjL6LQxraiBMZly/R9sspeZGTNPc14klc9voVsHdVSJM8MuO/kVVY1hl4pGPgSSpBG/bfNCs1h43dUkTOqOABtsv0C7HqQgCcyazQyIzemK5XzxAx8x4mdz3RaGd27Xj8oXMdmQoDXnRX9d2WmU0kAAAAA46kTbI14KEpsa5nFC+JMm/Ff4dMqPle8wptnUaADmvK3zuoUMtwK6Db3KpR8WNG3CBN5tl1nKPH4S1RN28Kxi</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
