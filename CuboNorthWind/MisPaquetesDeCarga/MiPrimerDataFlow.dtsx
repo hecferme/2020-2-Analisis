@@ -11,10 +11,27 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MiPrimerDataFlow"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{54D25F8B-04E0-4426-BFE1-6EF606BEB7C3}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{F0CC4580-848B-4F4A-8899-ED84995951CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).MyDb.sa1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{84B6A8AD-CD50-406B-BBE6-13BE711CF1FC}"
+      DTS:ObjectName="(local).MyDb.sa1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);User ID=sa;Initial Catalog=MyDb;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApgfazTu3eE2bbCWQY6m0JgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC01Egm3fd7Extr7ZKlK/o3zJFMYjUQ0+UBFrndfEkj9QAAAAAOgAAAAAIAACAAAACKVULZwsazUk2xjDrieJk9JJIaEuJHbkuj/PrbjCn5HRAAAACgVdxoY1ppD2GgwB6PeMFYQAAAABXYwN173fmkiA3NbrHf8BFc/uV5AntT1YKIVS1ZkAiYa6nGNc77qosyOmzAOCyY7A/8txt3aGFZazT+zdADin8</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -23,7 +40,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="IdProductoMaximo">
       <DTS:VariableValue
-        DTS:DataType="3">50</DTS:VariableValue>
+        DTS:DataType="3">510</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -51,20 +68,19 @@
           version="1">
           <components>
             <component
-              refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Convierta el product name a mayusculas"
+              refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convertir productName a mayusculas"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
+                  refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Inputs[Derived Column Input].Columns[ProductName]"
+                      refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Inputs[Data Conversion Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="ProductName"
@@ -75,57 +91,53 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
+                  refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Inputs[Derived Column Input]">
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output].Columns[UpperProductName]"
+                      refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output].Columns[UpperProductName]"
                       codePage="1252"
                       dataType="str"
-                      errorOrTruncationOperation="Computation"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="40"
-                      lineageId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output].Columns[UpperProductName]"
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output].Columns[UpperProductName]"
                       name="UpperProductName"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_STR,40,1252)(#{Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[ProductName]})</property>
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[ProductName]}</property>
                         <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_STR,40,1252)(ProductName)</property>
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
+                  refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Inputs[Derived Column Input]">
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -670,8 +682,8 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
               <connections>
                 <connection
                   refId="Package\Leer, Transformar y Cargar\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{9A7680B4-EB90-4064-B2E7-2211DC0C45B8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[(local).MyDb.sa]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MyDb.sa1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MyDb.sa1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -745,7 +757,7 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
                       cachedLength="40"
                       cachedName="UpperProductName"
                       externalMetadataColumnId="Package\Leer, Transformar y Cargar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output].Columns[UpperProductName]" />
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output].Columns[UpperProductName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -879,8 +891,8 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
               <connections>
                 <connection
                   refId="Package\Leer, Transformar y Cargar\OLE DB Destination 1.Connections[OleDbConnection]"
-                  connectionManagerID="{9A7680B4-EB90-4064-B2E7-2211DC0C45B8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[(local).MyDb.sa]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MyDb.sa1]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MyDb.sa1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -954,7 +966,7 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
                       cachedLength="40"
                       cachedName="UpperProductName"
                       externalMetadataColumnId="Package\Leer, Transformar y Cargar\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output].Columns[UpperProductName]" />
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output].Columns[UpperProductName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1163,7 +1175,7 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
                       cachedLength="40"
                       cachedName="UpperProductName"
                       externalMetadataColumnId="Package\Leer, Transformar y Cargar\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output].Columns[UpperProductName]" />
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output].Columns[UpperProductName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1238,21 +1250,241 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Leer, Transformar y Cargar\RegistrosRechazados"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="RegistrosRechazados"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[dbo].[productosRechazados]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Connections[OleDbConnection]"
+                  connectionManagerID="{9A7680B4-EB90-4064-B2E7-2211DC0C45B8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[(local).MyDb.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[SupplierID]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[SupplierID]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[CategoryID]"
+                      cachedDataType="i4"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[QuantityPerUnit]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="QuantityPerUnit"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[QuantityPerUnit]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[UnitsInStock]"
+                      cachedDataType="i2"
+                      cachedName="UnitsInStock"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[UnitsInStock]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[UnitsOnOrder]"
+                      cachedDataType="i2"
+                      cachedName="UnitsOnOrder"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[UnitsOnOrder]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[ReorderLevel]"
+                      cachedDataType="i2"
+                      cachedName="ReorderLevel"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[Discontinued]"
+                      cachedDataType="bool"
+                      cachedName="Discontinued"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[Discontinued]"
+                      lineageId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output].Columns[Discontinued]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[SupplierID]"
+                      dataType="i4"
+                      name="SupplierID" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[CategoryID]"
+                      dataType="i4"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[QuantityPerUnit]"
+                      dataType="wstr"
+                      length="20"
+                      name="QuantityPerUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[UnitsInStock]"
+                      dataType="i2"
+                      name="UnitsInStock" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[UnitsOnOrder]"
+                      dataType="i2"
+                      name="UnitsOnOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ReorderLevel]"
+                      dataType="i2"
+                      name="ReorderLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[Discontinued]"
+                      dataType="bool"
+                      name="Discontinued" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
           </components>
           <paths>
             <path
-              refId="Package\Leer, Transformar y Cargar.Paths[Derived Column Output]"
-              endId="Package\Leer, Transformar y Cargar\Derived Column.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Outputs[Derived Column Output]" />
+              refId="Package\Leer, Transformar y Cargar.Paths[Data Conversion Error Output]"
+              endId="Package\Leer, Transformar y Cargar\RegistrosRechazados.Inputs[SQL Server Destination Input]"
+              name="Data Conversion Error Output"
+              startId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Error Output]" />
             <path
-              refId="Package\Leer, Transformar y Cargar.Paths[Derived Column Output1]"
+              refId="Package\Leer, Transformar y Cargar.Paths[Data Conversion Output]"
+              endId="Package\Leer, Transformar y Cargar\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Leer, Transformar y Cargar.Paths[Derived Column Output]"
               endId="Package\Leer, Transformar y Cargar\Decida para cual tabla se graba el registro.Inputs[Conditional Split Input]"
               name="Derived Column Output"
               startId="Package\Leer, Transformar y Cargar\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Leer, Transformar y Cargar.Paths[OLE DB Source Output]"
-              endId="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas.Inputs[Derived Column Input]"
+              endId="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Leer, Transformar y Cargar\Leer la tabla de Products.Outputs[OLE DB Source Output]" />
             <path
@@ -1300,9 +1532,13 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="196,42"
-          Id="Package\Leer, Transformar y Cargar\Leer la tabla de Products"
-          TopLeft="403,152" />
+          Size="171,42"
+          Id="Package\Leer, Transformar y Cargar\OLE DB Destination"
+          TopLeft="121,595" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Leer, Transformar y Cargar\OLE DB Destination 1"
+          TopLeft="364,576" />
         <NodeLayout
           Size="278,42"
           Id="Package\Leer, Transformar y Cargar\Decida para cual tabla se graba el registro"
@@ -1312,86 +1548,79 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
           Id="Package\Leer, Transformar y Cargar\Derived Column"
           TopLeft="423.076923076923,346.923076923077" />
         <NodeLayout
-          Size="270,42"
-          Id="Package\Leer, Transformar y Cargar\Convierta el product name a mayusculas"
-          TopLeft="366.153846153846,249.230769230769" />
-        <EdgeLayout
-          Id="Package\Leer, Transformar y Cargar.Paths[OLE DB Source Output]"
-          TopLeft="501.076923076923,194">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.2307692307692"
-              Start="0,0"
-              End="0,47.7307692307692">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.7307692307692" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Leer, Transformar y Cargar.Paths[Derived Column Output1]"
-          TopLeft="499.538461538461,388.923076923077">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50.3076923076924"
-              Start="0,0"
-              End="0,42.8076923076924">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.8076923076924" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Leer, Transformar y Cargar.Paths[Derived Column Output]"
-          TopLeft="500.615384615385,291.230769230769">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.6923076923077"
-              Start="0,0"
-              End="0,48.1923076923077">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.1923076923077" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Este paquete se encarga de leer la tabla de Productos los que estan en un determinado rango de id &#xA;y clasificarlos en baratos, medios y caros, lo cual lo hace guardandolos en la tabla que corresponda"
-          ParentId="Package\Leer, Transformar y Cargar"
-          FontInfo="{assembly:Null}"
-          Size="558,56"
-          Id="1c57b802-81cb-40f0-9c5b-e300b5253977"
-          TopLeft="265,60" />
+          Size="180,42"
+          Id="Package\Leer, Transformar y Cargar\OLE DB Destination 2"
+          TopLeft="649,568" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Leer, Transformar y Cargar\OLE DB Destination"
-          TopLeft="121,595" />
+          Size="178,42"
+          Id="Package\Leer, Transformar y Cargar\RegistrosRechazados"
+          TopLeft="830.833333333333,499.166666666667" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Leer, Transformar y Cargar\Leer la tabla de Products"
+          TopLeft="418.833333333333,144.5" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Leer, Transformar y Cargar\Convertir productName a mayusculas"
+          TopLeft="410,242.5" />
+        <EdgeLayout
+          Id="Package\Leer, Transformar y Cargar.Paths[Data Conversion Output]"
+          TopLeft="498.205128205128,284.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.423076923077"
+              Start="0,0"
+              End="0,54.923076923077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.923076923077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leer, Transformar y Cargar.Paths[Data Conversion Error Output]"
+          TopLeft="578.666666666667,284.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="341.166666666667,214.666666666667"
+              Start="0,0"
+              End="341.166666666667,207.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.6697843595739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.6697843595739"
+                    Point2="0,86.6697843595739"
+                    Point3="4,86.6697843595739" />
+                  <mssgle:LineSegment
+                    End="337.166666666667,86.6697843595739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="337.166666666667,86.6697843595739"
+                    Point2="341.166666666667,86.6697843595739"
+                    Point3="341.166666666667,90.6697843595739" />
+                  <mssgle:LineSegment
+                    End="341.166666666667,207.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="104.496946614584,91.6697843595739,132.1727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Leer, Transformar y Cargar.Paths[ProductosMedios]"
           TopLeft="431.5,481.230769230769">
@@ -1428,10 +1657,6 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Leer, Transformar y Cargar\OLE DB Destination 1"
-          TopLeft="364,576" />
         <EdgeLayout
           Id="Package\Leer, Transformar y Cargar.Paths[ProductosCaros]"
           TopLeft="499,481.230769230769">
@@ -1468,10 +1693,6 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Leer, Transformar y Cargar\OLE DB Destination 2"
-          TopLeft="649,568" />
         <EdgeLayout
           Id="Package\Leer, Transformar y Cargar.Paths[ProductosBaratos]"
           TopLeft="566.5,481.230769230769">
@@ -1508,17 +1729,72 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leer, Transformar y Cargar.Paths[OLE DB Source Output]"
+          TopLeft="516.833333333333,186.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.6666666666667,56.0000000000001"
+              Start="0,0"
+              End="20.6666666666667,48.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="16.6666666666667,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.6666666666667,28"
+                    Point2="20.6666666666667,28"
+                    Point3="20.6666666666667,32" />
+                  <mssgle:LineSegment
+                    End="20.6666666666667,48.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leer, Transformar y Cargar.Paths[Derived Column Output]"
+          TopLeft="499.538461538461,388.923076923077">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.3076923076924"
+              Start="0,0"
+              End="0,42.8076923076924">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8076923076924" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Este paquete se encarga de leer la tabla de Productos los que estan en un determinado rango de id &#xA;y clasificarlos en baratos, medios y caros, lo cual lo hace guardandolos en la tabla que corresponda"
+          ParentId="Package\Leer, Transformar y Cargar"
+          FontInfo="{assembly:Null}"
+          Size="558,56"
+          Id="1c57b802-81cb-40f0-9c5b-e300b5253977"
+          TopLeft="265,60" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Leer, Transformar y Cargar\Leer la tabla de Products">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Leer, Transformar y Cargar\OLE DB Destination">
     <Properties>
@@ -1555,6 +1831,22 @@ WHERE        (ProductID BETWEEN ? AND ?)</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leer, Transformar y Cargar\RegistrosRechazados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leer, Transformar y Cargar\Leer la tabla de Products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
